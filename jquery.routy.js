@@ -8,15 +8,18 @@
 
 ;(function($, window, document, undefined)
 {
-	$.router = function(uri, callback)
-	{
-		var regex = new RegExp(uri + '$');
-		var match = regex.exec(location.pathname);
+    $.router = function(uri, callback)
+    {
+        var regex = new RegExp(uri + '$');
+        var match = regex.exec(location.pathname);
 
-		if (match)
-		{
-			callback.apply(callback, match.splice(1));
-		}
-	};
+        if (match)
+        {
+            $(function()
+            {
+                callback.apply(callback, match.splice(1));
+            });
+        }
+    };
 
 })(jQuery, window, document);
